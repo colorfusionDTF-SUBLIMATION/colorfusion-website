@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ColorFusion Prints Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
+  <script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+  <div hidden id="snipcart" data-api-key="Y2EwODExZWUtOTYxMS00ODMxLTgwY2QtNmIzZGY3ODFiYTI0NjM4ODY1OTY1NDAxMDcwMjc4"></div>
+  <style>
+    body {
+      background: rgba(0,0,0,0.6) url('https://m.media-amazon.com/images/I/81dxjMDvW9L._AC_SL1500_.jpg') center/cover no-repeat;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body class="text-white font-sans">
+  <div class="container mx-auto px-4 py-8">
+
+    <header class="text-center mb-12">
+      <h1 class="text-5xl font-bold">ColorFusion Prints Store</h1>
+      <p class="mt-4 text-lg">High-quality sublimated apparel (front & back)</p>
+    </header>
+
+    <section id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Generate 20 products -->
+      ${Array.from({length:20}, (_, i) => {
+        const types = ['T-Shirt','Long Sleeve','Hoodie','Zip Jacket','Softshell','Windbreaker','Tank Top','Crewneck','V-Neck','Raglan','Polo Shirt','Sweatshirt','Bomber Jacket','Denim Jacket','Windproof Jacket','Rain Jacket','Sport Jersey','Muscle Tee','Crop Tee','Oversized Tee'];
+        const type = types[i];
+        const price = (i%5===0?35:30) + Math.floor(Math.random()*11); // $30–45
+        return `
+        <div class="bg-white bg-opacity-90 p-4 rounded-xl shadow text-gray-900 text-center">
+          <h3 class="text-xl font-semibold mb-2">${type}</h3>
+          <p class="mb-2">$${price.toFixed(2)}</p>
+          <button class="snipcart-add-item bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700"
+            data-item-id="product${i+1}"
+            data-item-name="${type}"
+            data-item-price="${price.toFixed(2)}"
+            data-item-url="/"
+            data-item-description="Sublimated ${type} (front and back)">
+            Add to Cart
+          </button>
+        </div>`;
+      }).join('')}
+    </section>
+
+    <section class="mt-16 text-center">
+      <a href="#" class="snipcart-checkout bg-green-600 text-white py-3 px-6 rounded hover:bg-green-700">
+        View Cart & Checkout
+      </a>
+    </section>
+
+    <footer class="mt-16 text-center text-gray-300">
+      <p>📧 <a href="mailto:gabryllejorren2206@gmail.com" class="underline">gabryllejorren2206@gmail.com</a> • 📞 <a href="tel:5066883390" class="underline">506‑688‑3390</a></p>
+      <p>Hosted by <a href="https://wordan.ca" target="_blank" rel="noopener noreferrer" class="underline">Wordan.ca</a></p>
+      <p class="mt-4">&copy; 2025 ColorFusion Prints</p>
+    </footer>
+
+  </div>
+</body>
+</html>
